@@ -1,4 +1,9 @@
 <p>User with ID {{ user.id }} loaded.</p>
 <p>User name is {{user.name}}</p>
 <hr>
-<button class="btn btn-warning" [routerLink]="['/users' , 3, 'Anna']">load user</button>
+<button 
+  class="btn btn-warning" 
+  [routerLink]="['/users' , 3, 'Anna']"
+  [queryParams]="{edit: true}"
+  fragment="yes">load user
+</button>
