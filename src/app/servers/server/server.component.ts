@@ -10,7 +10,7 @@ import { ServersService } from '../servers.service';
 })
 export class ServerComponent implements OnInit {
   server: {id: number, name: string, status: string};
-  editable:number = 0;
+  allowEdit:number = 0;
   constructor(private serversService: ServersService,
               private route: ActivatedRoute,
               private router: Router) { }
@@ -22,12 +22,10 @@ export class ServerComponent implements OnInit {
       }
     )
     this.route.queryParams.subscribe((urlquery: Params) => {
-      console.log(this.editable)
-      this.editable = +(urlquery['allowEdit']);
-      console.log(this.editable)
+      this.allowEdit = +(urlquery['allowEdit']);
     })
   }
   onEdit(){
-    this.router.navigate(['edit'], {relativeTo: this.route} )
+    this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'})
   }
 }
